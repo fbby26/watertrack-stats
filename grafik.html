@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Grafik Produksi Air Bersih</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { margin: 0; padding: 20px; font-family: Arial; }
+    canvas { max-width: 100%; }
+  </style>
+</head>
+<body>
+  <h2>Produksi Air Bersih Nasional (2014–2023)</h2>
+  <canvas id="airChart"></canvas>
+
+  <script>
+    const ctx = document.getElementById('airChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['2014','2015','2017','2018','2019','2020','2021','2022','2023'],
+        datasets: [{
+          label: 'Produksi (juta m³)',
+          data: [4300, 4550, 4700, 4884.9, 5000, 5100, 5250, 5270, 5501],
+          borderColor: 'rgba(0, 123, 255, 1)',
+          backgroundColor: 'rgba(0, 123, 255, 0.2)',
+          fill: true,
+          tension: 0.3,
+          pointRadius: 4,
+          pointBackgroundColor: '#007bff'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Statistik Produksi Air Bersih (2014–2023)',
+            font: { size: 18 }
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false
+          },
+          legend: {
+            display: true
+          }
+        },
+        interaction: {
+          mode: 'nearest',
+          axis: 'x',
+          intersect: false
+        },
+        scales: {
+          y: {
+            beginAtZero: false,
+            title: {
+              display: true,
+              text: 'Volume (juta m³)'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
